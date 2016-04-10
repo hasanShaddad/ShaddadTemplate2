@@ -9,9 +9,9 @@ if you wanna help >>> you can </br>
 3- fix performence</br>
 you can contact us on ErtiqaaWebsites@gmail.com</br>
 <h2>for using the tamplate</h2></br>
-  <h4>  Download the rar file</h4></br>
-   <h4> create new ms sql database on your host</h4></br>
-  <h4>  use the .bak file  to create the database</h4></br>
-  <h4>  upload the web site to your host</h4></br>
-   <h3> enjoy</h3>
+  <h4>  Download the rar file</h4> 
+   <h4> create new ms sql database on your host</h4>
+  <h4>  use the .bak file  to create the database</h4> 
+  <h4>  upload the web site to your host</h4> 
+   <h2> enjoy</h2>
  
