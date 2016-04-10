@@ -1,0 +1,418 @@
+﻿  
+@model Tamplate_2.Models.AllTables
+@{
+    ViewBag.Title = "Home Page";
+}
+@foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "Header"))
+{
+    string hassan;
+
+    <div id="Header" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+        @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+        {
+            if (Request.Browser.IsMobileDevice && Request.HttpMethod == "GET")
+            {  <header style="background:#8a7156 url(../Mobile/@Html.DisplayFor(modelItem => n.C_Images7.C_Link)); text-align: center;  color: #669cc2;   background-attachment: scroll;   background-position: center center;   background-repeat: none;   -webkit-background-size: cover;   -moz-background-size: cover;   background-size: cover;  -o-background-size: cover;  padding-top: 300px;  padding-bottom: 200px;">
+
+
+                <div id="top" class="container">
+                    <div class="intro-text">
+                        <div class="intro-lead-in">@Html.DisplayFor(modelItem => n.C_p_txt1)</div>
+                        <div class="intro-heading">@Html.DisplayFor(modelItem => n.C_Txt_1)</div>
+                        <a href="#" class="btn btn-primary btn-lg">let us start</a>
+                    </div>
+                </div>
+            </header>}
+            else
+            {   <header style="background:#8a7156 url(../@Html.DisplayFor(modelItem => n.C_Images7.C_Link)); text-align: center;  color: #669cc2;   background-attachment: scroll;   background-position: center center;   background-repeat: none;   -webkit-background-size: cover;   -moz-background-size: cover;   background-size: cover;  -o-background-size: cover;">
+
+                <div id="top" class="container">
+                    <div class="intro-text">
+                        <div class="intro-lead-in">@Html.DisplayFor(modelItem => n.C_p_txt1)</div>
+                        <div class="intro-heading">@Html.DisplayFor(modelItem => n.C_Txt_1)</div>
+                        <a href="#" class="btn btn-primary btn-lg">let us start</a>
+                        
+                    </div>
+                </div>
+            </header> }
+
+        }
+    </div>
+}
+
+
+        <!-- Services Section ======================================================================================-->
+        @foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "Services"))
+        {
+            <section id="@Html.DisplayFor(modelItem => item.C_Section_Name)" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+                <div class="container fix">
+
+                    <div class="row">
+                        @*-----main*@
+
+                        <div class="col-lg-12 text-center">
+
+                            <h2 class="section-heading"> @Html.DisplayFor(modelItem => item.C_Heading)</h2>
+                            <h3 class="section-subheading text-muted">@Html.DisplayFor(modelItem => item.C_Sub_Heading)</h3>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row text-center">
+                        @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                        {
+
+                            <div class="col-md-4">
+                                <span >
+                                    <a> <i class="@Html.DisplayFor(modelItem => n.C_Txt_7) icon-a"></i></a>
+                                    </span>
+                               
+                                    <h2 class="service-heading">@Html.DisplayFor(modelItem => n.C_Heading)</h2>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => n.C_p_txt1).</p>
+                                
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+            </section>
+        }
+
+        <!--end of serveces section=================================================================================================-->
+        <!--PORTFOLIO=Section======================================================================================-->
+        <!-- Portfolio Grid Section -->
+        @foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "portfolio"))
+        {
+            <section id="@Html.DisplayFor(modelItem => item.C_Section_Name)" class="bg-light-gray" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">@Html.DisplayFor(modelItem => item.C_Heading)</h2>
+                            <h3 class="section-subheading text-muted">@Html.DisplayFor(modelItem => item.C_Sub_Heading).</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id & r.C_So_Search_Trim_1 == "main").Take(3))
+                        {
+                            <div class="col-md-4 col-sm-6 portfolio-item">
+
+                                <a href="@Url.Action("Index", "portfolio" , new { searchtrim=n.C_So_Search_Trim_2})" class="portfolio-link" data-toggle="modal">
+
+
+
+                                    <div class="portfolio-hover">
+                                        <div class="portfolio-hover-content">
+                                            <i class="@Html.DisplayFor(modelItem => n.C_Txt_7)"></i>@*font asowme*@
+                                        </div>
+                                    </div>
+
+                                    <img src="@Html.DisplayFor(modelItem => n.C_Images.C_Link)" title="@Html.DisplayFor(modelItem => n.C_Images.C_Title)" class="img-responsive" alt="@Html.DisplayFor(modelItem => n.C_Images.C_Alt)" width="360"  />
+
+                                </a>
+                                <div class="portfolio-caption">
+                                    <h4>@Html.DisplayFor(modelItem => n.C_H4_txt1)</h4>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => n.C_p_txt1)</p>
+                                </div>
+                            </div>
+
+
+                        }
+
+                    </div>
+                </div>
+            </section>
+        }
+        <!--END OF PORTFOLIO Section=======================================================================================-->
+
+
+
+
+
+
+
+
+   <!--time line events=======================================-====================================================-->
+<!-- events Section -->
+ 
+
+
+
+@foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "Events"))
+{
+    <section id="@Html.DisplayFor(modelItem => item.C_Section_Name)" class="bg-light-gray" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">@Html.DisplayFor(modelItem => item.C_Heading)</h2>
+                    <h3 class="section-subheading text-muted">@Html.DisplayFor(modelItem => item.C_Sub_Heading).</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <ul class="timeline">
+
+                        @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                        {
+
+                            <li class="@Html.DisplayFor(modelItem => n.C_L_To_R)">
+                                <div class="timeline-image">
+                                    <a href="@Html.DisplayFor(modelItem => n.C_Url_1)" class="timeline-link">
+                                        <img class="img-circle img-responsive" src="@Html.DisplayFor(modelItem => n.C_Images.C_Link)" width="175" height="175" alt="@Html.DisplayFor(modelItem => n.C_Images.C_Alt)">
+                                    </a>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>@Html.DisplayFor(modelItem => n.C_H4_txt1)</h4>
+                                        <h4 class="subheading">@Html.DisplayFor(modelItem => n.C_H4_txt2)</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">@Html.DisplayFor(modelItem => n.C_p_txt1)</p>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        }
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>
+                                    Be Part
+                                    <br>Of Our
+                                    <br>events!
+                                </h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<!--end of time line events==================================================-->
+
+
+
+
+
+
+
+<!-- Contact Section -->
+@foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "Contact"))
+{
+    <section id="@Html.DisplayFor(modelItem => item.C_Section_Name)" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">@Html.DisplayFor(modelItem => item.C_Heading)</h2>
+                    <h3 class="section-subheading text-muted">@Html.DisplayFor(modelItem => item.C_Sub_Heading)</h3>
+                </div>
+
+            </div>
+
+
+
+
+            @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id).Take(1))
+            {
+
+                <div class="row">
+                    <div id="map-outer" class="col-md-12">
+                        <div id="address" class="col-md-4">
+                            <h2>@Html.DisplayFor(modelItem => n.C_Heading)</h2>
+                            <address>
+                                <strong>@Html.DisplayFor(modelItem => n.C_Sub_Heading)</strong><br>
+                                @Html.DisplayFor(modelItem => n.C_p_txt1)<br>
+                                @Html.DisplayFor(modelItem => n.C_p_txt2)<br>
+                                @Html.DisplayFor(modelItem => n.C_p_txt3)<br>
+                                @Html.DisplayFor(modelItem => n.C_p_txt4)
+                                <br>
+                                <abbr>@Html.DisplayFor(modelItem => n.C_Txt_1)</abbr> @Html.DisplayFor(modelItem => n.C_Txt_2)
+                                <br>
+                                <abbr>@Html.DisplayFor(modelItem => n.C_Txt_3)</abbr> @Html.DisplayFor(modelItem => n.C_Txt_4)
+
+                            </address>
+                        </div>
+                        <div id="map-container" class="col-md-8">
+
+                            <div id="map_canvas" style=" height:250px; text-align:center;"> @Html.DisplayFor(modelItem => n.C_Url_4)</div>
+                        </div>
+                    </div><!-- /map-outer -->
+                </div> <!-- /row -->
+            }@*end of content*@
+            <div class="row">
+
+                @using (Html.BeginForm("Send", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <div class="col-md-4">
+
+                            @Html.TextBoxFor(model => model.First_Name, new { @class = "form-control", placeholder = "First Name" })
+                        </div>
+                        <div class="col-md-4">
+
+                            @Html.TextBoxFor(model => model.Last_Name, new { @class = "form-control", placeholder = "Last Name" })
+                        </div>
+                        <div class="col-md-4 input-group">
+                            <span class="input-group-addon"> </span>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email Address" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @*<textarea rows="6" class="form-control" id="comments" name="comments" placeholder="Your question or comment here"></textarea>*@
+                            @Html.TextAreaFor(model => model.Subject, new { @class = "form-control", placeholder = "Your question or comment here" })
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" name="Send" value="Send" class="btn btn-warning pull-right" />
+                        </div>
+                    </div>
+
+                }
+
+
+            </div><!-- /row -->
+
+
+        </div><!-- /container -->
+    </section>
+}@*end for each section*@
+
+
+@foreach (var item in Model.C_Section_Table.Where(r => r.C_Section_Name == "Facebook"))
+{
+    <section id="@Html.DisplayFor(modelItem => item.C_Section_Name)" class="bg-light-gray" style="display : @Html.DisplayFor(modelItem => item.C_Display)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">@Html.DisplayFor(modelItem => item.C_Heading)</h2>
+                    <h3 class="section-subheading text-muted">@Html.DisplayFor(modelItem => item.C_Sub_Heading)</h3>
+                </div>
+
+
+
+
+
+                @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                {
+                    string tst = "";
+                    if (n.C_So_Search_Trim_1 == "Posts" && tst == "")
+                    {
+                        tst = "exit";
+                        <div class="col-lg-6 text-center">
+                            <h4>@Html.DisplayFor(modelItem => n.C_Heading)</h4>
+                            <p>@Html.DisplayFor(ModelItem => n.C_p_txt1)</p>
+                            <div class="fb-page" data-href="@Html.DisplayFor(modelItem => n.C_So_Page_Link)" data-tabs="timeline" data-width="500" data-height="350" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="@Html.DisplayFor(modelItem => n.C_So_Page_Link)"><a href="@Html.DisplayFor(modelItem => n.C_So_Page_Link)"></a></blockquote></div></div>
+                        </div>
+
+                    }
+
+                }@*end of posts*@
+                <div class="col-lg-6 text-center ">
+                    @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id && r.C_So_Search_Trim_1 == "Videos").Take(1))
+                    {
+
+
+                        <h4>@Html.DisplayFor(modelItem => n.C_Heading)</h4>
+                        <p>@Html.DisplayFor(ModelItem => n.C_p_txt1)</p>
+
+                    }
+
+                    <div class="pre-scrollable">
+                        @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                        {
+
+                            if (n.C_So_Search_Trim_1 == "Videos")
+                            {
+
+                                <div id="fb-root"></div>
+                                <script>(function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v2.3"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script><div class="fb-video" data-allowfullscreen="1" data-href="@Html.DisplayFor(modelItem => n.C_So_Video_Link)"><div class="fb-xfbml-parse-ignore"><blockquote cite="@Html.DisplayFor(modelItem => n.C_So_Video_Link)"><a href="@Html.DisplayFor(modelItem => n.C_So_Video_Link)"></a><p>@Html.DisplayFor(modelItem => n.C_Description)</p>‎Posted by <a href="@Html.DisplayFor(modelItem => n.C_So_Page_Link)">@Html.DisplayFor(modelItem => n.C_So_Page_Name)</a> @Html.DisplayFor(modelItem => n.C_Txt_1)</blockquote></div></div>
+                                <br /><br />
+
+                            }
+
+                        }
+                    </div>
+                </div>@*end of video*@
+
+
+
+                <div class="col-lg-12 text-center">
+                    <br /><br />
+                    @{string tstme = "";}
+                    @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                    {
+                        if (n.C_So_Search_Trim_1 == "Photos" && tstme == "")
+                        {
+                            tstme = "exit";
+                            <h4>@Html.DisplayFor(modelItem => n.C_Heading)</h4>
+                            <p>@Html.DisplayFor(ModelItem => n.C_p_txt1)</p>
+
+                        }
+                    }
+
+                    <div id="galleria"></div>
+                </div>@*//end of galliria*@
+
+                @{string tst2 = "";}
+                @foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                {
+
+                    if (n.C_So_Search_Trim_1 == "Comments" && tst2 == "")
+                    {
+                        tst2 = "exit";
+                        <div class="col-lg-12 text-center">
+                            <h4>@Html.DisplayFor(modelItem => n.C_Heading)</h4>
+                            <p>@Html.DisplayFor(ModelItem => n.C_p_txt1)</p>
+                            <div class="fb-comments" data-href="@Html.DisplayFor(modelItem => n.C_Url_1)" data-numposts="5"></div>@*our site link*@
+                        </div>
+
+                    }
+
+                }@*end of posts*@
+
+
+            </div>
+
+        </div>
+    </section>
+                string tst3 = "";
+                foreach (var n in Model.C_Section_Content.Where(r => r.C_Section_Id == item.Id))
+                {
+                    if (n.C_So_Search_Trim_1 == "Photos" && tst3 == "")
+                    {
+                        tst3 = "exit";
+                        <script>
+                            Galleria.loadTheme('Scripts/galleria/themes/classic/galleria.classic.min.js');
+
+                            Galleria.run('#galleria', {
+                                facebook: 'album:@Html.DisplayFor(modelItem => n.C_So_Photo_Album)',
+
+                                lightbox: true,
+                                facebookOptions: {
+                                    max: 30, // optional override for limit of 40 photos on an album
+                                    facebook_access_token: '@Html.DisplayFor(modelItem => n.C_So_Access_Token)'
+                                }
+                            });
+                        </script>
+                    }
+                }
+
+}

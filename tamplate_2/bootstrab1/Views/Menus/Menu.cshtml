@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Tamplate_2.Models.C_Section_Table>
+
+<nav class="navbar navbar-default navbar-fixed-top cbp-af-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="~/Images/header/1.png" />
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="@Url.Action("Index", "Home")#Header">Home</a>
+                </li>
+                @if (ViewBag.auth == "admin")
+                {
+                    <li>
+                        <a class="page-scroll" href="@Url.Action("Index", "Sections")#Header">back admin</a>
+                    </li>
+                }
+
+                @foreach (var Itm in Model.OrderBy(c => c.C_Order))
+                {
+                    if (Itm.C_Display == "block" && Itm.C_Section_Name != "Header" && Itm.C_Section_Name != "Footer")
+                    {
+                        <li>
+
+                            <a class="page-scroll" href="@Url.Action("Index", "Home")#@Itm.C_Section_Name">@Itm.C_Section_Name</a>
+                        </li>
+                    }
+                  
+                    }
+              
+
+                @Html.Partial("_LoginPartial")
+
+
+
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
