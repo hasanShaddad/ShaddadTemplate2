@@ -1,4 +1,4 @@
-# ErtiqaaTemplate2
+# ShaddadTemplate2
 mvc dynamic and rsponsive web site with back admin panel
 Ertiqaa template is a mvc website fully dynamic and responsive 
 its easy to use and come with back admin cntrol panel
